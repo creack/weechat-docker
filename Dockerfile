@@ -1,5 +1,10 @@
+#
+# Weechat configuration
+#
+# docker run -i -t -p 0.0.0.0:8000:8000 -p 0.0.0.0:8001:8001 creack/weechat
+#
 FROM		ubuntu:12.10
-MAINTAINER	Guillaume J. Charmes <charmes.guillaume@gmail.com>
+MAINTAINER	Guillaume J. Charmes <guillaume@charmes.net>
 
 # Install add-apt-repository
 RUN		apt-get -qq install -y software-properties-common
@@ -21,8 +26,12 @@ ENV		TERM	screen-256color
 
 ENTRYPOINT	weechat-curses
 
+EXPOSE		8000
+EXPOSE		8001
+
 RUN		ln -s /home/creack/.weechat/perl/buffers.pl /home/creack/.weechat/perl/autoload/buffers.pl
 ADD		irc.conf /home/creack/.weechat/
 # FIXME: handle mouse support
 #ADD		weechat.conf /home/creack/.weechat/
+ADD		relay.conf /home/creack/.weechat/
 ADD		buffers.pl /home/creack/.weechat/perl/
