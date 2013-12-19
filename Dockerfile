@@ -31,7 +31,8 @@ EXPOSE		8001
 
 RUN		ln -s /home/creack/.weechat/perl/buffers.pl /home/creack/.weechat/perl/autoload/buffers.pl
 ADD		irc.conf /home/creack/.weechat/
-# FIXME: handle mouse support
-#ADD		weechat.conf /home/creack/.weechat/
+ADD		weechat.conf /home/creack/.weechat/
 ADD		relay.conf /home/creack/.weechat/
 ADD		buffers.pl /home/creack/.weechat/perl/
+
+# FIXME: Add a chan monitor Limechat style
